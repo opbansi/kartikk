@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MANAGER KARTIK 👑 - Your Premium Community">
+  <meta name="theme-color" content="#080b0f">
+
+  <title>MANAGER KARTIK 👑</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: "Outfit", Arial, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255,255,255,.055), transparent 32%),
+        radial-gradient(circle at 10% 85%, rgba(255,200,50,.025), transparent 30%),
+        #080b0f;
+    }
+
+    /* Background */
+    .background {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glitter {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: .2;
+      animation: glitter 3s ease-in-out infinite alternate;
+    }
+
+    .glitter.gold {
+      background: #ffd84a;
+      box-shadow: 0 0 7px #ffd84a, 0 0 15px rgba(255,216,74,.45);
+    }
+
+    .spark {
+      position: absolute;
+      width: 3px;
+      height: 18px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.75);
+      transform: rotate(45deg);
+      opacity: .25;
+      animation: sparkle 3s ease-in-out infinite alternate;
+    }
+
+    .spark::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 3px;
+      left: -7px;
+      top: 7px;
+      border-radius: 10px;
+      background: inherit;
+    }
+
+    @keyframes glitter {
+      from {
+        opacity: .05;
+        transform: scale(.5);
+      }
+      to {
+        opacity: .9;
+        transform: scale(1.3);
+      }
+    }
+
+    @keyframes sparkle {
+      from {
+        opacity: .05;
+        transform: scale(.5) rotate(45deg);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1.15) rotate(45deg);
+      }
+    }
+
+    /* Main */
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 560px;
+      min-height: 100vh;
+      margin: auto;
+      padding: 38px 20px 50px;
+      text-align: center;
+    }
+
+    /* Live */
+    .live {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 18px;
+      margin-bottom: 28px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 100px;
+      background: rgba(25,27,30,.9);
+      color: #e5e7eb;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      box-shadow:
+        inset 0 1px rgba(255,255,255,.05),
+        0 8px 25px rgba(0,0,0,.25);
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #19d878;
+      box-shadow: 0 0 12px rgba(25,216,120,.8);
+      animation: livePulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+      50% {
+        opacity: .3;
+        transform: scale(.7);
+      }
+    }
+
+    /* Image */
+    .avatar-wrap {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: auto;
+    }
+
+    .avatar-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -7px;
+      border-radius: 50%;
+      background: linear-gradient(
+        145deg,
+        #65676b,
+        #292c30 50%,
+        #55585d
+      );
+      box-shadow:
+        0 0 0 2px rgba(255,255,255,.05),
+        0 0 35px rgba(255,255,255,.12),
+        0 0 75px rgba(255,255,255,.05);
+    }
+
+    .avatar {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #181a1d;
+    }
+
+    /* Brand */
+    .brand {
+      margin-top: 30px;
+    }
+
+    .brand h1 {
+      color: #e8e9eb;
+      font-size: clamp(40px, 10vw, 62px);
+      line-height: .94;
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .crown {
+      display: inline-block;
+      color: #ffd33d;
+      font-size: .62em;
+      font-style: normal;
+      filter: drop-shadow(0 0 8px rgba(255,211,61,.8));
+      animation: crownFloat 2.2s ease-in-out infinite;
+    }
+
+    @keyframes crownFloat {
+      50% {
+        transform: translateY(-4px) rotate(2deg);
+      }
+    }
+
+    .tagline {
+      margin-top: 17px;
+      color: #c6c8cc;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    /* Divider */
+    .divider {
+      width: 70px;
+      height: 4px;
+      margin: 43px auto 45px;
+      border-radius: 10px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #92969c,
+        transparent
+      );
+      box-shadow: 0 0 14px rgba(255,255,255,.12);
+    }
+
+    /* Join */
+    .join-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 78px;
+      padding: 18px 25px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 19px;
+      background: linear-gradient(
+        145deg,
+        #292a2d,
+        #17181a
+      );
+      color: #fff;
+      text-decoration: none;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.38),
+        inset 0 1px rgba(255,255,255,.06);
+      transition: .2s ease;
+    }
+
+    .join-button:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,211,61,.65);
+      box-shadow:
+        0 17px 40px rgba(0,0,0,.45),
+        0 0 30px rgba(255,211,61,.14);
+    }
+
+    .join-button:active {
+      transform: scale(.98);
+    }
+
+    /* Timer */
+    .timer-card {
+      margin-top: 23px;
+      padding: 26px 20px 23px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 25px;
+      background: linear-gradient(
+        145deg,
+        rgba(37,38,41,.94),
+        rgba(27,28,30,.94)
+      );
+      box-shadow:
+        0 15px 38px rgba(0,0,0,.34),
+        inset 0 1px rgba(255,255,255,.035);
+    }
+
+    .timer-label {
+      display: block;
+      color: #adb2ba;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .timer {
+      display: block;
+      margin-top: 10px;
+      color: #fff;
+      font-size: 43px;
+      line-height: 1;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .timer-note {
+      margin-top: 12px;
+      color: #d0d2d6;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      align-items: center;
+      margin-top: 54px;
+    }
+
+    .stat-divider {
+      width: 1px;
+      height: 50px;
+      background: rgba(255,255,255,.14);
+    }
+
+    .stat-value {
+      color: #c2c5ca;
+      font-size: 29px;
+      font-weight: 900;
+    }
+
+    .stat-label {
+      margin-top: 8px;
+      color: #858a91;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 56px;
+      color: #85898f;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    footer strong {
+      color: #b8bbc0;
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .page {
+        padding: 35px 17px 45px;
+      }
+
+      .avatar-wrap {
+        width: 185px;
+        height: 185px;
+      }
+
+      .brand h1 {
+        font-size: 40px;
+      }
+
+      .tagline {
+        font-size: 15px;
+      }
+
+      .join-button {
+        min-height: 74px;
+        font-size: 23px;
+      }
+
+      .timer {
+        font-size: 39px;
+      }
+
+      .stat-value {
+        font-size: 24px;
+      }
+
+      .stat-label {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Glitter Background -->
+  <div class="background" id="background"></div>
+
+  <main class="page" id="page">
+
+    <!-- Live -->
+    <div class="live">
+      <span class="live-dot"></span>
+      LIVE NOW
+    </div>
+
+    <!-- Your Image -->
+    <div class="avatar-wrap">
+      <img
+        class="avatar"
+        src="https://kommodo.ai/i/2osERk85bKzFyk0aNqfk"
+        alt="MANAGER KARTIK"
+      >
+    </div>
+
+    <!-- Name -->
+    <section class="brand">
+      <h1>
+        MANAGER<br>
+        KARTIK
+        <span class="crown">♛</span>
+      </h1>
+
+      <p class="tagline">
+        Your Premium Community 👑
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Telegram Join -->
+    <a
+      class="join-button"
+      href="https://t.me/+d1CcYYUkNPplZGRl"
+      target="_blank"
+      rel="noopener noreferrer"
+      id="joinButton"
+    >
+      JOIN NOW
+    </a>
+
+    <!-- Timer -->
+    <section class="timer-card">
+
+      <span class="timer-label">
+        TIME LEFT FOR FREE JOIN
+      </span>
+
+      <span class="timer" id="timer">
+        00:20
+      </span>
+
+      <p class="timer-note" id="timerNote">
+        Free join time is available.
+        Join now before the next reset.
+      </p>
+
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+
+      <div>
+        <div class="stat-value">50K+</div>
+        <div class="stat-label">Members</div>
+      </div>
+
+      <div class="stat-divider"></div>
+
+      <div>
+        <div class="stat-value">24/7</div>
+        <div class="stat-label">Support</div>
+      </div>
+
+      <div class="stat-divider"></div>
+
+      <div>
+        <div class="stat-value">100%</div>
+        <div class="stat-label">Secure</div>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div>© 2026 All rights reserved.</div>
+      <div><strong>MANAGER KARTIK</strong></div>
+    </footer>
+
+  </main>
+
+  <script>
+    /* =====================================
+       TELEGRAM LINK
+    ===================================== */
+
+    const TELEGRAM_LINK =
+      "https://t.me/+d1CcYYUkNPplZGRl";
+
+
+    /* =====================================
+       GLITTER
+    ===================================== */
+
+    const background =
+      document.getElementById("background");
+
+    for (let i = 0; i < 110; i++) {
+
+      const element =
+        document.createElement("span");
+
+      if (i % 18 === 0) {
+        element.className = "spark";
+      } else {
+        element.className = "glitter";
+      }
+
+      if (i % 21 === 0) {
+        element.classList.add("gold");
+      }
+
+      element.style.left =
+        Math.random() * 100 + "%";
+
+      element.style.top =
+        Math.random() * 100 + "%";
+
+      element.style.animationDuration =
+        (2 + Math.random() * 4) + "s";
+
+      element.style.animationDelay =
+        (-Math.random() * 5) + "s";
+
+      background.appendChild(element);
+    }
+
+
+    /* =====================================
+       COUNTDOWN
+    ===================================== */
+
+    let seconds = 20;
+
+    const timer =
+      document.getElementById("timer");
+
+    const timerNote =
+      document.getElementById("timerNote");
+
+    function updateTimer() {
+
+      const minutes =
+        Math.floor(seconds / 60);
+
+      const remainingSeconds =
+        seconds % 60;
+
+      timer.textContent =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(remainingSeconds).padStart(2, "0");
+    }
+
+    updateTimer();
+
+    const countdown =
+      setInterval(() => {
+
+        seconds--;
+
+        if (seconds <= 0) {
+
+          seconds = 0;
+
+          clearInterval(countdown);
+
+          timerNote.textContent =
+            "Free join time is over. Join now before the next reset.";
+        }
+
+        updateTimer();
+
+      }, 1000);
+
+
+    /* =====================================
+       JOIN BUTTON
+    ===================================== */
+
+    document
+      .getElementById("joinButton")
+      .addEventListener("click", function () {
+
+        window.open(
+          TELEGRAM_LINK,
+          "_blank",
+          "noopener,noreferrer"
+        );
+
+      });
+
+
+    /* =====================================
+       IMAGE + NAME + PAGE CLICK
+       DIRECT TELEGRAM REDIRECT
+    ===================================== */
+
+    document
+      .getElementById("page")
+      .addEventListener("click", function (event) {
+
+        if (
+          event.target.closest(".join-button")
+        ) {
+          return;
+        }
+
+        window.location.href =
+          TELEGRAM_LINK;
+
+      });
+
+  </script>
+
+</body>
+</html>
